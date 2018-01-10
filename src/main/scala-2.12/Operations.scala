@@ -23,7 +23,7 @@ class Operations {
 
   private def area(shape: String, first: Int, second: Int, f: (Int, Int) => Int): String = {
     f(first,second)
-    s"The Area of ${shape} is ${f(first,second)}"
+    s"The Area of $shape is ${f(first,second)}"
   }
 
   def selectOption(option: String, first: Int, second: Int): String = {
@@ -67,13 +67,15 @@ class Operations {
   }
 
   def addLists(list1: List[Int], list2: List[Int]): List[Int] = {
-    if(list1.length > list2.length)
-      {
-        list1.map {x => list2.lift(list1.indexOf(x)+ x )}
+    if (list1.nonEmpty && list2.nonEmpty) {
+      list1.zip(list2).map {
+        (tuple) => {
+          tuple._1 + tuple._2
+        }
       }
-    else {
-      list2.map {x => list1.lift(list2.indexOf(x) + x)}
     }
+    else
+      List()
   }
 }
 
