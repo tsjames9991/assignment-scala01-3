@@ -73,10 +73,11 @@ class Operations {
 
   def addLists(list1: List[Int], list2: List[Int]): List[Int] = {
     if (list1.nonEmpty && list2.nonEmpty) {
-      list1.zip(list2).map {
-        (tuple) => {
-          tuple._1 + tuple._2
-        }
+      (list1, list2) match {
+        case (head1 :: tail1, head2 :: tail2) => List(head1 + head2) ::: addLists(tail1, tail2)
+        case (head1 :: tail1, Nil) => List(head1) ::: addLists(tail1, Nil)
+        case (Nil, head1 :: tail1) => List(head1) ::: addLists(tail1, Nil)
+        case (Nil, Nil) => addLists(Nil, Nil)
       }
     }
     else {
@@ -94,11 +95,11 @@ object Operations extends App {
   val testList2 = temp.toList
   val testFibonacci = 5
   val choice = "rectangle"
-  print(s"Write a program to find Fibonacci series till a given limit${obj.printFibonacci(testFibonacci)}")
-  print(s"List of sums  ${obj.addLists(testList1, testList2)}")
-  print(s"Higher order function ${obj.selectOption(choice, test1, test2)}")
-  print(s"Double all the elements of a list using map ${obj.doubleTheList(testList2)}")
-  print(s"Find the Kth element of a list ${obj.findElementByPosition(testList2, test2)}")
-  print(s"Find the number of elements of a list ${obj.lengthOfList(testList1)}")
-  print(s"Reverse a list ${obj.reverseList(testList2)}")
+  print(s"\n\nWrite a program to find Fibonacci series till a given limit :\n${obj.printFibonacci(testFibonacci)}")
+  print(s"\n\nList of sums :\n ${obj.addLists(testList1, testList2)}")
+  print(s"\n\nHigher order function :\n${obj.selectOption(choice, test1, test2)}")
+  print(s"\n\nDouble all the elements of a list using map :\n${obj.doubleTheList(testList2)}")
+  print(s"\n\nFind the Kth element of a list :\n${obj.findElementByPosition(testList2, test2)}")
+  print(s"\n\nFind the number of elements of a list :\n${obj.lengthOfList(testList1)}")
+  print(s"\n\nReverse a list :\n${obj.reverseList(testList2)}")
 }
