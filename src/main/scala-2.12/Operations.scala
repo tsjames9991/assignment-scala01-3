@@ -1,29 +1,25 @@
 class Operations {
 
-  private def generateFibonacci(number: Int): Int = {
-    def tailRecursion(a: Int, b: Int, fib: Int): Int = {
-      fib match {
-        case 0 => a
-        case 1 => b
-        case _ => tailRecursion(b ,a+b , fib-1)
-      }
-    }
-    tailRecursion(0, 1, number)
-  }
-
   def printFibonacci(number: Int): List[Int] = {
     val temp = 1 to number
     val fibonacciList = temp.toList
     fibonacciList.map(x => generateFibonacci(x))
   }
 
-  def doubleTheList(number: List[Int]): List[Int] = {
-    number.map(x => x*2)
+  private def generateFibonacci(number: Int): Int = {
+    def tailRecursion(a: Int, b: Int, fib: Int): Int = {
+      fib match {
+        case 0 => a
+        case 1 => b
+        case _ => tailRecursion(b, a + b, fib - 1)
+      }
+    }
+
+    tailRecursion(0, 1, number)
   }
 
-  private def area(shape: String, first: Int, second: Int, f: (Int, Int) => Int): String = {
-    f(first,second)
-    s"The Area of $shape is ${f(first,second)}"
+  def doubleTheList(number: List[Int]): List[Int] = {
+    number.map(x => x * 2)
   }
 
   def selectOption(option: String, first: Int, second: Int): String = {
@@ -36,27 +32,36 @@ class Operations {
     }
   }
 
-  def lengthOfList(number: List[Int]): Int  = {
+  private def area(shape: String, first: Int, second: Int, f: (Int, Int) => Int): String = {
+    f(first, second)
+    s"The Area of $shape is ${f(first, second)}"
+  }
+
+  def lengthOfList(number: List[Int]): Int = {
     def countLength(list: List[Int], length: Int): Int = {
       list match {
         case Nil => length
-        case _ :: tail => countLength(tail, length+1)
+        case _ :: tail => countLength(tail, length + 1)
       }
     }
-    countLength(number,0)
+
+    countLength(number, 0)
   }
 
   def findElementByPosition(number: List[Int], position: Int): Int = {
     def countPlaces(list: List[Int], length: Int): Int = {
-      if(list.nonEmpty) {
+      if (list.nonEmpty) {
         (length, list) match {
           case (0, head :: _) => head
           case (_, _ :: tail) => countPlaces(tail, length - 1)
         }
       }
-      else {-1}
+      else {
+        -1
+      }
     }
-    countPlaces(number,position)
+
+    countPlaces(number, position)
   }
 
   def reverseList(list: List[Int]): List[Int] = {
@@ -74,23 +79,26 @@ class Operations {
         }
       }
     }
-    else
+    else {
       List()
+    }
   }
 }
 
 object Operations extends App {
   val obj = new Operations
   val temp = 1 to 10
+  val test1: Int = 20
+  val test2: Int = 5
   val testList1 = temp.toList
   val testList2 = temp.toList
   val testFibonacci = 5
   val choice = "rectangle"
-  println(s"Write a program to find Fibonacci series till a given limit${obj.printFibonacci(testFibonacci)}")
-  println(s"List of sums  ${obj.addLists(testList1,testList2)}")
-  println(s"Higher order function ${obj.selectOption(choice, 4, 5)}")
-  println(s"Double all the elements of a list using map ${obj.doubleTheList(testList2)}")
-  println(s"Find the Kth element of a list ${obj.findElementByPosition(testList2,4)}")
-  println(s"Find the number of elements of a list ${obj.lengthOfList(testList1)}")
-  println(s"Reverse a list ${obj.reverseList(testList2)}")
+  print(s"Write a program to find Fibonacci series till a given limit${obj.printFibonacci(testFibonacci)}")
+  print(s"List of sums  ${obj.addLists(testList1, testList2)}")
+  print(s"Higher order function ${obj.selectOption(choice, test1, test2)}")
+  print(s"Double all the elements of a list using map ${obj.doubleTheList(testList2)}")
+  print(s"Find the Kth element of a list ${obj.findElementByPosition(testList2, test2)}")
+  print(s"Find the number of elements of a list ${obj.lengthOfList(testList1)}")
+  print(s"Reverse a list ${obj.reverseList(testList2)}")
 }
