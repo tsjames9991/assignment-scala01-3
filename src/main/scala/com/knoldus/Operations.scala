@@ -1,3 +1,8 @@
+package com.knoldus
+
+import com.sun.istack.internal.logging.Logger
+
+
 class Operations {
 
   def printFibonacci(number: Int): List[Int] = {
@@ -95,11 +100,12 @@ object Operations extends App {
   val testList2 = temp.toList
   val testFibonacci = 5
   val choice = "rectangle"
-  print(s"\n\nWrite a program to find Fibonacci series till a given limit :\n${obj.printFibonacci(testFibonacci)}")
-  print(s"\n\nList of sums :\n ${obj.addLists(testList1, testList2)}")
-  print(s"\n\nHigher order function :\n${obj.selectOption(choice, test1, test2)}")
-  print(s"\n\nDouble all the elements of a list using map :\n${obj.doubleTheList(testList2)}")
-  print(s"\n\nFind the Kth element of a list :\n${obj.findElementByPosition(testList2, test2)}")
-  print(s"\n\nFind the number of elements of a list :\n${obj.lengthOfList(testList1)}")
-  print(s"\n\nReverse a list :\n${obj.reverseList(testList2)}")
+  val log = Logger.getLogger(this.getClass)
+  log.info(s"\n\nWrite a program to find Fibonacci series till a given limit :\n${obj.printFibonacci(testFibonacci)}")
+  log.info(s"\n\nList of sums :\n ${obj.addLists(testList1, testList2)}")
+  log.info(s"\n\nHigher order function :\n${obj.selectOption(choice, test1, test2)}")
+  log.info(s"\n\nDouble all the elements of a list using map :\n${obj.doubleTheList(testList2)}")
+  log.info(s"\n\nFind the Kth element of a list :\n${obj.findElementByPosition(testList2, test2)}")
+  log.info(s"\n\nFind the number of elements of a list :\n${obj.lengthOfList(testList1)}")
+  log.info(s"\n\nReverse a list :\n${obj.reverseList(testList2)}")
 }

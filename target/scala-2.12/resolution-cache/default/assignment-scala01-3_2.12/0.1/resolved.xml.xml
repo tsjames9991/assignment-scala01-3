@@ -4,7 +4,7 @@
 		module="assignment-scala01-3_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20180110184044"
+		publication="20180111113018"
 	>
 		<description>
 		assignment-scala01-3
@@ -32,6 +32,6 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.12.4" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.12.4" conf="scala-tool->default,optional(default);compile->default(compile)"/>
-		<dependency org="org.scalastyle" name="scalastyle-sbt-plugin" rev="1.0.0" conf="compile->default(compile)" e:sbtVersion="1.0" e:scalaVersion="2.12"/>
+		<dependency org="log4j" name="log4j" rev="1.2.17" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
